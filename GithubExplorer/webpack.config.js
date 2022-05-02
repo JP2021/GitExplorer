@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
 const isDevelopement = process.env.NODE_ENV !== 'production';
 module.exports = {
     mode: isDevelopement ?'development': 'production',
@@ -14,7 +16,8 @@ module.exports = {
     },
     devServer: {
         static: {
-          directory: path.resolve(__dirname, "public")
+          directory: path.resolve(__dirname, "public"),
+    
         },
         
     
@@ -22,17 +25,25 @@ module.exports = {
         port: 8080, // default 8000
       },
     plugins:[
+       isDevelopement && new ReactRefreshWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public', 'index.html')
         })
-    ],
+    ].filter(Boolean),
 
     module:{
         rules:[
             {
         test: /\.jsx$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: {
+        loader:'babel-loader',
+        options:{
+            plugins:[
+                isDevelopement && require.resolve('react-refresh/babel')
+            ].filter(Boolean)
+        }
+    }
             },
             
                 {
