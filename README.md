@@ -1,6 +1,6 @@
 # GitExplorer
 Clone o repositório<br>
-Acesse GitExplorer/GithubExplorer
-yarn para baixar as dependências 
-yarn dev
-Acesse localhost:8080
+Acesse GitExplorer/GithubExplorer<br>
+yarn para baixar as dependências <br>
+yarn dev<br>
+Acesse localhost:8080<br>
