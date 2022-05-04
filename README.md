@@ -1,5 +1,5 @@
 # GitExplorer
-Clone o repositório
+Clone o repositório<br>
 Acesse GitExplorer/GithubExplorer
 yarn para baixar as dependências 
 yarn dev
